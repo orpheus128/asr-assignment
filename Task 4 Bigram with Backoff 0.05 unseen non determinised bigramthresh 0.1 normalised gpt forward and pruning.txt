@@ -1,0 +1,9 @@
+State Count: 120, Arc Count: 256 
+File: 0000.wav, 
+Errors: (3, 1, 2), 
+WER: 75.0, 
+Expected: "peter piper pickled a peck of picked peppers",
+Actual: "where's of a of pickled of peck of picked", 
+Steps Taken: 758, 
+Decode Time: 1.2964821539935656, 
+Backtrace Time: 0.0004098530043847859 

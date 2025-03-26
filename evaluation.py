@@ -1,4 +1,4 @@
-with open ('Task 3 Pruning beam width 80.txt', 'r') as f:
+with open ('Task 4 Bigram with Backoff 0.05 unseen non determinised bigramthresh 0.1 normalised gpt forward and pruning.txt', 'r') as f:
     eval_code = f.read()
     
 files = eval_code.split('File')
@@ -10,6 +10,7 @@ avg_decode_time = 0.0
 avg_backtrace_time = 0.0
 
 files = files[1:]
+removed_num = 0
 
 for file in files:
     file = file.split('\n')
@@ -18,16 +19,19 @@ for file in files:
     steps_taken = int(file[5].split(' ')[-2][:-1])
     decode_time = float(file[6].split(' ')[-2][:-1])
     backtrace_time = float(file[7].split(' ')[-2][:-1])
-    
+
     avg_wer += wer
     avg_steps_taken += steps_taken
     avg_decode_time += decode_time
-    avg_backtrace_time += backtrace_time
+    if backtrace_time > 1:
+        removed_num += 1
+    else: 
+        avg_backtrace_time += backtrace_time
 
 avg_wer /= len(files)
 avg_steps_taken /= len(files)
 avg_decode_time /= len(files)
-avg_backtrace_time /= len(files)
+avg_backtrace_time /= (len(files) - removed_num)
 
 print('Memory:', memory)
 print('Average WER:', avg_wer)
