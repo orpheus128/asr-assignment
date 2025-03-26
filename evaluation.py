@@ -1,4 +1,4 @@
-with open ('Task 4 Bigram with Backoff 0.05 unseen non determinised bigramthresh 0.1 normalised gpt forward and pruning.txt', 'r') as f:
+with open ('Task 4 VITERBI TEST.txt', 'r') as f:
     eval_code = f.read()
     
 files = eval_code.split('File')
